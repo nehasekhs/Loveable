@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Bell, Shield, Palette, Globe, CreditCard } from "lucide-react";
 
@@ -11,6 +12,7 @@ export default function Settings() {
     { id: "security", label: "Security", icon: Shield },
     { id: "appearance", label: "Appearance", icon: Palette },
     { id: "billing", label: "Billing", icon: CreditCard },
+    {id: "Client Dashboard", label: "Client Dashboard", icon: CreditCard },
     { id: "language", label: "Language", icon: Globe },
   ];
 
@@ -61,33 +63,6 @@ export default function Settings() {
                 defaultValue="Experienced client looking for quality freelancers."
                 className="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white"
               />
-            </div>
-          </div>
-        );
-
-      case "notifications":
-        return (
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold">Notification Preferences</h3>
-            <div className="space-y-4">
-              {[
-                { label: "Email notifications", description: "Receive updates via email" },
-                { label: "Push notifications", description: "Get notified on your device" },
-                { label: "SMS notifications", description: "Receive text messages" },
-                { label: "Project updates", description: "Updates about your projects" },
-                { label: "Payment alerts", description: "Payment and billing notifications" },
-              ].map((item, index) => (
-                <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-gray-800 border border-gray-700">
-                  <div>
-                    <div className="font-medium">{item.label}</div>
-                    <div className="text-sm text-gray-400">{item.description}</div>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" defaultChecked className="sr-only peer" />
-                    <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500"></div>
-                  </label>
-                </div>
-              ))}
             </div>
           </div>
         );
@@ -206,7 +181,12 @@ export default function Settings() {
             </div>
           </div>
         );
-
+       case "Client Dashboard":
+        return(
+          <>
+          <Link to ="/client/dashboard">Client Dashboard</Link>
+          </>
+        );
       case "language":
         return (
           <div className="space-y-6">

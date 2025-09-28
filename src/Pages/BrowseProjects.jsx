@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -12,6 +13,7 @@ export default function BrowseProjects() {
   const [duration, setDuration] = useState("");
   const [skills, setSkills] = useState("");
 
+
   async function load() {
     const params = new URLSearchParams();
     if (q) params.append("q", q);
@@ -25,20 +27,27 @@ export default function BrowseProjects() {
     setItems(data);
   }
 
+  async function loadDemo() {
+    const res = await fetch(`${API}/api/projects/demo`);
+    const data = await res.json();
+    setItems(data);
+  }
+
   useEffect(() => { load(); }, []);
 
   return (
     <div className="px-6 py-8 max-w-7xl mx-auto text-white">
       <h1 className="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Find Work</h1>
-      <div className="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-800 grid grid-cols-1 md:grid-cols-6 gap-3">
+  <div className="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-800 grid grid-cols-1 md:grid-cols-6 gap-3">
         <input placeholder="Search" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={q} onChange={(e)=>setQ(e.target.value)} />
         <input placeholder="Category" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={category} onChange={(e)=>setCategory(e.target.value)} />
         <input placeholder="Min Budget" type="number" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={minBudget} onChange={(e)=>setMinBudget(e.target.value)} />
         <input placeholder="Max Budget" type="number" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={maxBudget} onChange={(e)=>setMaxBudget(e.target.value)} />
         <input placeholder="Duration" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={duration} onChange={(e)=>setDuration(e.target.value)} />
         <input placeholder="Skills (comma)" className="px-3 py-2 rounded bg-gray-800 border border-gray-700" value={skills} onChange={(e)=>setSkills(e.target.value)} />
-        <div className="md:col-span-6">
+        <div className="md:col-span-6 flex gap-3">
           <button onClick={load} className="px-4 py-2 rounded-lg bg-gradient-to-r from-pink-500 to-violet-600">Apply Filters</button>
+          <button onClick={loadDemo} className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-pink-500">Show Demo Projects</button>
         </div>
       </div>
 
@@ -57,6 +66,15 @@ export default function BrowseProjects() {
                 <span key={t} className="px-2 py-0.5 rounded bg-gray-700">{t}</span>
               ))}
             </div>
+            {p.videoUrl && (
+              <video controls className="mt-4 rounded-lg w-full border border-pink-500 shadow-lg">
+                <source src={p.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+            {p.description && (
+              <div className="mt-3 text-gray-400 text-sm">{p.description}</div>
+            )}
           </motion.div>
         ))}
       </div>

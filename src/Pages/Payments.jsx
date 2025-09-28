@@ -27,7 +27,7 @@ export default function Payments() {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_xxxxxxxx",
         amount: order.amount,
         currency: order.currency,
-        name: "GigConnect",
+        name: "Neha's Website",
         description: "Wallet Top-up",
         order_id: order.id,
         handler: function (response) {

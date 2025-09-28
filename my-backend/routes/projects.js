@@ -3,6 +3,50 @@ const router = express.Router();
 const requireAuth = require("../middleware/auth");
 const Project = require("../models/Project");
 
+// Demo projects endpoint
+router.get("/demo", async (req, res) => {
+  res.json([
+    {
+      _id: "demo1",
+      title: "AI Video Editor Web App",
+      company: "DemoTech",
+      description: "A web app that lets users upload, edit, and export videos with AI-powered effects. Includes a live video preview below!",
+      budgetMin: 1000,
+      budgetMax: 3000,
+      duration: "2 months",
+      category: "Web Development",
+      tags: ["AI", "Video", "React", "Node.js"],
+      videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
+      createdAt: new Date(),
+    },
+    {
+      _id: "demo2",
+      title: "E-commerce Platform Redesign",
+      company: "Shoply",
+      description: "Redesign the UI/UX of an existing e-commerce platform for better conversion and mobile experience.",
+      budgetMin: 2000,
+      budgetMax: 5000,
+      duration: "1 month",
+      category: "UI/UX Design",
+      tags: ["UI/UX", "Figma", "E-commerce"],
+      createdAt: new Date(),
+    },
+    {
+      _id: "demo3",
+      title: "Mobile Fitness App",
+      company: "FitNow",
+      description: "Develop a cross-platform fitness app with workout tracking, video tutorials, and social features.",
+      budgetMin: 1500,
+      budgetMax: 4000,
+      duration: "3 months",
+      category: "Mobile Development",
+      tags: ["React Native", "Fitness", "API"],
+      createdAt: new Date(),
+    },
+  ]);
+});
+
+
 // Create project (client only)
 router.post("/", requireAuth, async (req, res) => {
   try {

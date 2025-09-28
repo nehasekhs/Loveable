@@ -23,38 +23,17 @@ import { FaUserCircle } from "react-icons/fa";
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <span className="w-8 h-8 rounded-lg bg-gradient-to-r from-pink-500 to-violet-600 inline-block"></span>
-          <span className="text-2xl font-extrabold bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">GigConnect</span>
+          <span className="text-2xl font-extrabold bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">Neha's Website</span>
         </Link>
 
         {/* Nav Links */}
         <ul className="hidden md:flex space-x-8 text-lg font-medium">
+
           <li className="hover:text-green-400 cursor-pointer">
             <Link to="/">Home</Link>
           </li>
-
-          {/* Hire Freelancer with Dropdown */}
-          <li className="relative">
-            <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="hover:text-green-400 cursor-pointer"
-            >
-              Hire Freelancer ▾
-            </button>
-
-            {/* Dropdown Menu */}
-            {isDropdownOpen && (
-              <ul className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg">
-                <li className="px-4 py-2 hover:bg-green-200 cursor-pointer">
-                  Web Developers
-                </li>
-                <li className="px-4 py-2 hover:bg-green-200 cursor-pointer">
-                  Designers
-                </li>
-                <li className="px-4 py-2 hover:bg-green-200 cursor-pointer">
-                  Writers
-                </li>
-              </ul>
-            )}
+          <li className="hover:text-green-400 cursor-pointer">
+            <Link to="/hire-freelancer">Hire Freelancer</Link>
           </li>
 
           <li className="hover:text-green-400 cursor-pointer">
@@ -69,7 +48,9 @@ import { FaUserCircle } from "react-icons/fa";
           <li className="hover:text-green-400 cursor-pointer">
             <Link to="/project-room/demo">Chat 💬</Link>
           </li>
-          <li className="hover:text-green-400 cursor-pointer">Pricing</li>
+          <li className="hover:text-green-400 cursor-pointer">
+           <Link to="/settings">Setting</Link>
+           </li>
         </ul>
 
         {/* Right Side: Login & Signup */}

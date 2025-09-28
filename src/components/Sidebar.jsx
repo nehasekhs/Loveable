@@ -52,7 +52,7 @@ export default function Sidebar({ isOpen, onClose }) {
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-gradient-to-r from-pink-500 to-violet-600 shadow-md"></div>
               <span className="text-xl font-bold bg-gradient-to-r from-pink-500 to-violet-600 bg-clip-text text-transparent">
-                GigConnect
+                Neha's Website
               </span>
             </div>
             <button

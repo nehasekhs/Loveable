@@ -18,6 +18,7 @@ import ProjectRoom from "./Pages/ProjectRoom";
 import Reviews from "./Pages/Reviews";
 import WriteReview from "./Pages/WriteReview";
 import Settings from "./Pages/Settings";
+import HireFreelancer from "./Pages/HireFreelancer";
 import Sidebar from "./components/Sidebar";
 
 export default function App() {
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="/review/:userId" element={<Reviews />} />
           <Route path="/write-review/:projectId/:revieweeId/:type" element={<WriteReview />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/hire-freelancer" element={<HireFreelancer />} />
         </Routes>
       </div>
     </BrowserRouter>
